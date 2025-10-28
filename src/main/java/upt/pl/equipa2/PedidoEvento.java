@@ -2,6 +2,9 @@ package upt.pl.equipa2;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import jakarta.persistence.*;
+
+
 public class PedidoEvento {
 	private int idPedido;
 	private BigDecimal custoEstimado;
