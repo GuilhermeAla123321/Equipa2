@@ -9,10 +9,6 @@ import jakarta.persistence.*;
 public class AlunoUpt extends Utilizador{
     @Column(name = "numero_aluno", nullable = false)
 	private int numeroAluno;
-	
-    public AlunoUpt() {
-    	
-    }
     
     public AlunoUpt(){}
 
