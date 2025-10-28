@@ -1,14 +1,10 @@
 package upt.pl.equipa2;
 
-<<<<<<< HEAD
-
-=======
 import java.time.LocalDateTime;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "evento")
->>>>>>> branch 'master' of https://github.com/GuilhermeAla123321/Equipa2.git
 public class Evento {
 
     @Id
