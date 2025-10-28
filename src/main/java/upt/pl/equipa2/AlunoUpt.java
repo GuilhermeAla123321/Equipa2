@@ -6,13 +6,9 @@ import jakarta.persistence.*;
 @DiscriminatorValue("ALUNO")
 public class AlunoUpt extends Utilizador{
 	
-    @Column(name = "numero_aluno", nullable = false, length=5)
+    @Column(name = "numero_aluno", nullable = false)
 	private int numeroAluno;
 
-	
-    @ManyToOne
-    @JoinColumn(name = "id_utilizador", nullable = false)
-    private Utilizador utilizador;
     
     public AlunoUpt() {
     	
