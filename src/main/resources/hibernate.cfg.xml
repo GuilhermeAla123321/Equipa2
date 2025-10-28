@@ -70,7 +70,7 @@
     <!--  Mapped Entity Classes         --> 
     <!-- ============================== --> 
  
-    <!-- 
+    <!-- ddd
       List all annotated entity classes used by Hibernate. 
       Each class must include its full package name. 
     -->         
