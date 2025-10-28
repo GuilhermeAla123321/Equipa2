@@ -1,10 +1,11 @@
 package upt.pl.equipa2;
 
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-
+import org.hibernate.Session; 
+ import org.hibernate.SessionFactory; 
+ import org.hibernate.boot.MetadataSources; 
+ import org.hibernate.boot.registry.StandardServiceRegistry; 
+ import org.hibernate.boot.registry.StandardServiceRegistryBuilder; 
+ 
 public class EventoManager {
 
     public SessionFactory sessionFactory;
@@ -30,24 +31,67 @@ public class EventoManager {
     }
    
      public void exit() { 
-         // code to close Hibernate Session factory 
      } 
    
-     public void create() { 
-         // code to save a course 
-     } 
+     public void create(int IdUtilizador,String nome,String Password,int Idade) { 
+         Session session = sessionFactory.openSession(); 
+               session.beginTransaction(); 
    
-     public void read() { 
+               Utilizador u1=new Utilizador(); 
+               u1.setNome(nome); 
+               u1.setIdade(Idade); 
+               u1.setPassword(Password);
+               u1.setIdUtilizador(IdUtilizador);
+               
+
+               session.persist(u1); 
+   
+               session.getTransaction().commit(); 
+               session.close(); 
+   
+       } 
+     
+   
+     public void read( int IdUtilizador) {
+    		    Session session = sessionFactory.openSession();
+    		        		    
+    		    Utilizador u = session.get(Utilizador.class, IdUtilizador);
+
+    		    if (u != null) {
+    		        System.out.println("Nome: " + u.getNome());
+    		        System.out.println("Idade: " + u.getIdade());
+    		        System.out.println("Password: " + u.getPassword());
+    		    } else {
+    		        System.out.println("Utilizador com ID " + IdUtilizador + " não encontrado.");
+    		    }
+
+    		    session.close();
+        }
+
+     public void update(int IdUtilizador,String nome,String Password,int Idade) { 
+    	 	Utilizador u = new Utilizador();; 
+    	 	u.setIdUtilizador(IdUtilizador);       
+    	    u.setNome(nome);      
+    	    u.setPassword(Password);   
+    	    u.setIdade(Idade);
+
+    	    Session session = sessionFactory.openSession();
+    	    session.beginTransaction();
+    	    session.merge(u);        
+    	    session.getTransaction().commit();
+    	    session.close();
  
-         // code to get a course 
-     } 
+    	   
+     }
    
-     public void update() { 
-         // code to modify a course 
-     } 
+     public void delete(int IdUtilizador) { 
+    	  Utilizador u = new Utilizador(); 
+          u.setIdUtilizador(IdUtilizador); 
+          Session session = sessionFactory.openSession(); 
+           session.beginTransaction(); 
+           session.remove(u); 
+           session.getTransaction().commit(); 
+             session.close();      
+         }
+}
    
-     public void delete() { 
-         // code to remove a course 
-     } 
-   
-  } 
