@@ -1,6 +1,7 @@
 package upt.pl.equipa2;
 import java.time.LocalDateTime;
 
+
 public class Evento {
 	private int idEvento;
 	private String titulo;
