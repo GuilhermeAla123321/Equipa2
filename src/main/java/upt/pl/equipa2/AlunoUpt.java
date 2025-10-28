@@ -5,16 +5,27 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Aluno")
-@PrimaryKeyJoinColumn(name = "id_utilizador") 
+
 public class AlunoUpt extends Utilizador{
-    @Column(name = "numero_aluno", nullable = false)
+	@Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+    @Column(name = "numero_aluno", nullable = false, length=5)
 	private int numeroAluno;
 	
+	
+    @ManyToOne
+    @JoinColumn(name = "id_utilizador", nullable = false)
+    private Utilizador utilizador;
+    
     public AlunoUpt() {
     	
     }
     
-    public AlunoUpt(){}
+    public AlunoUpt(int idUtilizador, String nome, int idade, String password) {
+        super(idUtilizador, nome, idade, password);
+        this.numeroAluno= numeroAluno;
+	}
 
 	public int getNumeroAluno() {
 		return numeroAluno;
@@ -28,8 +39,6 @@ public class AlunoUpt extends Utilizador{
 	public String toString() {
 		return "AlunoUpt [numeroAluno=" + numeroAluno + "]";
 	}
-	
-    
-	
+
 	
 }
