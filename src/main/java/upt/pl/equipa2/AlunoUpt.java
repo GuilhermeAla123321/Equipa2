@@ -14,10 +14,7 @@ public class AlunoUpt extends Utilizador{
     	
     }
     
-    public AlunoUpt(int idUtilizador, String nome, int idade, String password) {
-        super(idUtilizador, nome, idade, password);
-        this.numeroAluno= numeroAluno;
-	}
+    public AlunoUpt(){}
 
 	public int getNumeroAluno() {
 		return numeroAluno;
