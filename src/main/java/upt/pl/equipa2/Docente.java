@@ -1,5 +1,4 @@
 package upt.pl.equipa2;
-
 import jakarta.persistence.*;
 
 @Entity
