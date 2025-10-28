@@ -2,17 +2,16 @@ package upt.pl.equipa2;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "docente")
+@DiscriminatorValue("DOCENTE")
 public class Docente extends Utilizador {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
     @Column(name = "id_docente")
     private int id_docente;
 
-    @Column(name = "emailIns", nullable = false, length = 100)
+    @Column(name = "email_ins", nullable = false, length = 100)
     private String emailIns;
-
+;
+    
     public Docente() {
     }
 

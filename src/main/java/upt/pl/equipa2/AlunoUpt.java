@@ -2,12 +2,9 @@ package upt.pl.equipa2;
 
 import jakarta.persistence.*;
 
-
 @Entity
-@Table(name = "Aluno")
+@DiscriminatorValue("ALUNO")
 public class AlunoUpt extends Utilizador{
-	@Id 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	
     @Column(name = "numero_aluno", nullable = false, length=5)
 	private int numeroAluno;
@@ -20,11 +17,6 @@ public class AlunoUpt extends Utilizador{
     public AlunoUpt() {
     	
     }
-
-    public AlunoUpt(int idUtilizador, String nome, int idade, String password) {
-        super(idUtilizador, nome, idade, password);
-        this.numeroAluno= numeroAluno;
-	}
 
 	public int getNumeroAluno() {
 		return numeroAluno;

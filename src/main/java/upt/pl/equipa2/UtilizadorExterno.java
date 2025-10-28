@@ -1,12 +1,20 @@
 package upt.pl.equipa2;
+import jakarta.persistence.*;
 
+@Entity
+@DiscriminatorValue("UtilizadorExterno")
 public class UtilizadorExterno extends Utilizador{
+
+
+    @Column(name = "email", nullable = false, length = 100)
 	private String email;
 	
-	public UtilizadorExterno(int idUtilizador, String nome, int idade, String password, String emailIns) {
-        super(idUtilizador, nome, idade, password);
-        this.email = email;    
-	}
+    
+    
+    public UtilizadorExterno() {
+    	
+    }
+
 
 	public String getEmail() {
 		return email;

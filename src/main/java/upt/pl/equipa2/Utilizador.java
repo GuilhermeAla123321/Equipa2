@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "utilizador")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "user_type", discriminatorType = DiscriminatorType.STRING, length = 20)
 public class Utilizador {
 
     @Id
@@ -23,12 +25,6 @@ public class Utilizador {
     public Utilizador() {
     }
     
-    public Utilizador(int idUtilizador, String nome, int idade, String password) {
-        this.idUtilizador = idUtilizador;
-        this.nome = nome;
-        this.idade = idade;
-        this.password = password;
-    }
     public int getIdUtilizador() {
         return idUtilizador;
     }

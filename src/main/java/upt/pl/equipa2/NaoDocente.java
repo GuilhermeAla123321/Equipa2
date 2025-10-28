@@ -1,11 +1,23 @@
 package upt.pl.equipa2;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
+@DiscriminatorValue("NaoDocente")
 public class NaoDocente extends Utilizador{
-	private String departamento;
 	
-	public NaoDocente(int idUtilizador, String nome, int idade, String password, String emailIns) {
-        super(idUtilizador, nome, idade, password);
-        this.departamento = departamento;    
+	@Column(name = "departamento", length = 100)
+	private String departamento;
+	 
+	
+
+	
+	public NaoDocente() {  
 	}
 
 	public String getDepartamento() {
