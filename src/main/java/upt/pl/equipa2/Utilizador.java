@@ -13,7 +13,7 @@ public class Utilizador {
     @Column(name = "id_utilizador")
     private int idUtilizador;
 
-    @Column(name = "nome", nullable = false, length = 100, unique = true)
+    @Column(name = "nome", nullable = false, length = 100)
     private String nome;
 
     @Column(name = "idade", nullable = false)
@@ -22,26 +22,37 @@ public class Utilizador {
     @Column(name = "password", nullable = false, length = 100)
     private String password;
 
-    // ----------------- Relação Many-to-Many inversa -----------------
-    @ManyToMany(mappedBy = "utilizadores")
-    private Set<Evento> eventos = new HashSet<>();
-
-    // Construtor padrão
     public Utilizador() {}
+    
+	public int getIdUtilizador() {
+		return idUtilizador;
+	}
 
-    // Getters e Setters
-    public int getIdUtilizador() { return idUtilizador; }
-    public void setIdUtilizador(int idUtilizador) { this.idUtilizador = idUtilizador; }
+	public void setIdUtilizador(int idUtilizador) {
+		this.idUtilizador = idUtilizador;
+	}
 
-    public String getNome() { return nome; }
-    public void setNome(String nome) { this.nome = nome; }
+	public String getNome() {
+		return nome;
+	}
 
-    public int getIdade() { return idade; }
-    public void setIdade(int idade) { this.idade = idade; }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public String getPassword() { return password; }
-    public void setPassword(String password) { this.password = password; }
+	public int getIdade() {
+		return idade;
+	}
 
-    public Set<Evento> getEventos() { return eventos; }
-    public void setEventos(Set<Evento> eventos) { this.eventos = eventos; }
+	public void setIdade(int idade) {
+		this.idade = idade;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	} 
 }

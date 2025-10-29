@@ -21,10 +21,10 @@ public class Evento {
     private String descricao;
 
     @Column(name = "data_inicio", nullable = false)
-    private LocalDateTime dataInicio;
+    private String dataInicio;
 
     @Column(name = "data_fim", nullable = false)
-    private LocalDateTime dataFim;
+    private String dataFim;
 
     @Column(name = "local", nullable = false, length = 100)
     private String local;
@@ -44,52 +44,118 @@ public class Evento {
     @Column(name = "status", nullable = false, length = 50)
     private String status;
 
-    // ----------------- Relação Many-to-Many -----------------
-    @ManyToMany
-    @JoinTable(
-        name = "evento_utilizador",
-        joinColumns = @JoinColumn(name = "id_evento"),
-        inverseJoinColumns = @JoinColumn(name = "id_utilizador")
-    )
-    private Set<Utilizador> utilizadores = new HashSet<>();
-
-    // Construtor padrão
+    
     public Evento() {}
 
-    // Getters e Setters
-    public int getIdEvento() { return idEvento; }
-    public void setIdEvento(int idEvento) { this.idEvento = idEvento; }
 
-    public String getTitulo() { return titulo; }
-    public void setTitulo(String titulo) { this.titulo = titulo; }
+	public int getIdEvento() {
+		return idEvento;
+	}
 
-    public String getDescricao() { return descricao; }
-    public void setDescricao(String descricao) { this.descricao = descricao; }
 
-    public LocalDateTime getDataInicio() { return dataInicio; }
-    public void setDataInicio(LocalDateTime dataInicio) { this.dataInicio = dataInicio; }
+	public void setIdEvento(int idEvento) {
+		this.idEvento = idEvento;
+	}
 
-    public LocalDateTime getDataFim() { return dataFim; }
-    public void setDataFim(LocalDateTime dataFim) { this.dataFim = dataFim; }
 
-    public String getLocal() { return local; }
-    public void setLocal(String local) { this.local = local; }
+	public String getTitulo() {
+		return titulo;
+	}
 
-    public int getVagas() { return vagas; }
-    public void setVagas(int vagas) { this.vagas = vagas; }
 
-    public String getArea() { return area; }
-    public void setArea(String area) { this.area = area; }
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
 
-    public String getTipoEvento() { return tipoEvento; }
-    public void setTipoEvento(String tipoEvento) { this.tipoEvento = tipoEvento; }
 
-    public String getPublicoAlvo() { return publicoAlvo; }
-    public void setPublicoAlvo(String publicoAlvo) { this.publicoAlvo = publicoAlvo; }
+	public String getDescricao() {
+		return descricao;
+	}
 
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
 
-    public Set<Utilizador> getUtilizadores() { return utilizadores; }
-    public void setUtilizadores(Set<Utilizador> utilizadores) { this.utilizadores = utilizadores; }
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+
+	public String getDataInicio() {
+		return dataInicio;
+	}
+
+
+	public void setDataInicio(String dataInicio) {
+		this.dataInicio = dataInicio;
+	}
+
+
+	public String getDataFim() {
+		return dataFim;
+	}
+
+
+	public void setDataFim(String dataFim) {
+		this.dataFim = dataFim;
+	}
+
+
+	public String getLocal() {
+		return local;
+	}
+
+
+	public void setLocal(String local) {
+		this.local = local;
+	}
+
+
+	public int getVagas() {
+		return vagas;
+	}
+
+
+	public void setVagas(int vagas) {
+		this.vagas = vagas;
+	}
+
+
+	public String getArea() {
+		return area;
+	}
+
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
+
+	public String getTipoEvento() {
+		return tipoEvento;
+	}
+
+
+	public void setTipoEvento(String tipoEvento) {
+		this.tipoEvento = tipoEvento;
+	}
+
+
+	public String getPublicoAlvo() {
+		return publicoAlvo;
+	}
+
+
+	public void setPublicoAlvo(String publicoAlvo) {
+		this.publicoAlvo = publicoAlvo;
+	}
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
 }

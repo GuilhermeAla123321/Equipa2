@@ -10,8 +10,8 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        GestorUtilizador gUtilizador = new GestorUtilizador();
-        EventoManager eventoDao = new EventoManager();
+        GestorUtilizador utilizador = new GestorUtilizador();
+         GestorEvento evento = new GestorEvento();
 
         Utilizador user = null;
 
@@ -23,14 +23,14 @@ public class Main {
             System.out.print("Password: ");
             String pass = sc.nextLine();
 
-            user = gUtilizador.login(nome, pass);
+            user = utilizador.login(nome, pass);
             if (user == null) { 
             	System.out.println("❌ Utilizador não encontrado, Criar um novo utilizador");
 	            Utilizador newUser = new Utilizador();
 	            System.out.print("Nome: "); newUser.setNome(sc.nextLine());
 	            System.out.print("Idade: "); newUser.setIdade(sc.nextInt());sc.nextLine();
 	            System.out.print("Senha: "); newUser.setPassword(sc.nextLine());
-	            gUtilizador.Criar(newUser);
+	            utilizador.Criar(newUser);
 	            }
             else System.out.println("✅ Bem-vindo, " + user.getNome() + "!");
         }
@@ -51,24 +51,32 @@ public class Main {
             switch (opcao) {
                 case 1 :{
                     Evento e = new Evento();
-                    System.out.print("Título: "); e.setTitulo(sc.nextLine());
-                    System.out.print("Descrição: "); e.setDescricao(sc.nextLine());
-                    System.out.print("Local: "); e.setLocal(sc.nextLine());
-                    System.out.print("Vagas: "); e.setVagas(sc.nextInt()); sc.nextLine();
-                    System.out.print("Área: "); e.setArea(sc.nextLine());
-                    System.out.print("Tipo de evento: "); e.setTipoEvento(sc.nextLine());
+                    System.out.print("Título: ");
+                    e.setTitulo(sc.nextLine());
+                    
+                    System.out.print("Descrição: "); 
+                    e.setDescricao(sc.nextLine());
+                    
+                    System.out.print("Local: "); 
+                    e.setLocal(sc.nextLine());
+                    
+                    System.out.print("Vagas: "); 
+                    e.setVagas(sc.nextInt()); sc.nextLine();
+                    
+                    System.out.print("Área: "); 
+                    e.setArea(sc.nextLine());
+                    
+                    System.out.print("Tipo de evento: "); 
+                    e.setTipoEvento(sc.nextLine());
+                    
                     System.out.print("Público-alvo: "); e.setPublicoAlvo(sc.nextLine());
                     System.out.print("Status: "); e.setStatus(sc.nextLine());
-                    e.setDataInicio(LocalDateTime.now());
-                    e.setDataFim(LocalDateTime.now().plusHours(2));
-                    eventoDao.salvar(e);
+                    System.out.print("DataInicio: "); e.setDataInicio(sc.nextLine());
+                    System.out.print("DataFim: "); e.setDataFim(sc.nextLine());
+                    evento.create(e);
                     break;
                 }
-                case 2 :{
-                    List<Evento> lista = eventoDao.listarTodos();
-                    if (lista.isEmpty()) System.out.println("Nenhum evento encontrado.");
-                    else lista.forEach(ev -> System.out.println(ev.getIdEvento() + " | " + ev.getTitulo()));
-                }
+               
                 case 3 :{
                     System.out.print("ID do evento: "); int id = sc.nextInt(); sc.nextLine();
                     System.out.print("Novo título: "); String titulo = sc.nextLine();
@@ -79,14 +87,16 @@ public class Main {
                     System.out.print("Novo tipo de evento: "); String tipoEvento = sc.nextLine();
                     System.out.print("Novo público-alvo: "); String publicoAlvo = sc.nextLine();
                     System.out.print("Novo status: "); String status = sc.nextLine();
-                    eventoDao.update(id, titulo, descricao, LocalDateTime.now(),
-                                     LocalDateTime.now().plusHours(2),
+                    System.out.print(" "); String dataInicio = sc.nextLine();
+                    System.out.print(""); String dataFim = sc.nextLine();
+                    
+                    evento.update(id, titulo, descricao,dataInicio, dataFim,
                                      local, vagas, area, tipoEvento, publicoAlvo, status);
                     break;
                 }
                 case 4 :{
                     System.out.print("ID do evento a eliminar: "); int id = sc.nextInt(); sc.nextLine();
-                    eventoDao.deletar(id);
+                    evento.deletar(id);
                     break;
                 }
                 case 5 : System.out.println("👋 A sair...");
