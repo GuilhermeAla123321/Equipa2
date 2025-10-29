@@ -1,11 +1,11 @@
 package upt.pl.equipa2;
 
 import jakarta.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "utilizador")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "user_type", discriminatorType = DiscriminatorType.STRING, length = 20)
+@Table(name = "UTILIZADOR")
 public class Utilizador {
 
     @Id
@@ -13,53 +13,35 @@ public class Utilizador {
     @Column(name = "id_utilizador")
     private int idUtilizador;
 
-    @Column(name = "nome", nullable = false, length = 100)
+    @Column(name = "nome", nullable = false, length = 100, unique = true)
     private String nome;
 
     @Column(name = "idade", nullable = false)
     private int idade;
 
-    @Column(name = "pass", nullable = false, length = 7)
+    @Column(name = "password", nullable = false, length = 100)
     private String password;
 
-    public Utilizador() {
-    }
-    
-    public int getIdUtilizador() {
-        return idUtilizador;
-    }
+    // ----------------- Relação Many-to-Many inversa -----------------
+    @ManyToMany(mappedBy = "utilizadores")
+    private Set<Evento> eventos = new HashSet<>();
 
-    public void setIdUtilizador(int idUtilizador) {
-        this.idUtilizador = idUtilizador;
-    }
+    // Construtor padrão
+    public Utilizador() {}
 
-    public String getNome() {
-        return nome;
-    }
+    // Getters e Setters
+    public int getIdUtilizador() { return idUtilizador; }
+    public void setIdUtilizador(int idUtilizador) { this.idUtilizador = idUtilizador; }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
 
-    public int getIdade() {
-        return idade;
-    }
+    public int getIdade() { return idade; }
+    public void setIdade(int idade) { this.idade = idade; }
 
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Override
-    public String toString() {
-        return "Utilizador [idUtilizador=" + idUtilizador + ", nome=" + nome +
-               ", idade=" + idade + ", password=" + password + "]";
-    }
+    public Set<Evento> getEventos() { return eventos; }
+    public void setEventos(Set<Evento> eventos) { this.eventos = eventos; }
 }

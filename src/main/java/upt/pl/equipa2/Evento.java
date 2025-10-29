@@ -1,7 +1,9 @@
 package upt.pl.equipa2;
 
-import java.time.LocalDateTime;
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "evento")
@@ -42,95 +44,52 @@ public class Evento {
     @Column(name = "status", nullable = false, length = 50)
     private String status;
 
-    // Construtor padrão (obrigatório pelo JPA)
+    // ----------------- Relação Many-to-Many -----------------
+    @ManyToMany
+    @JoinTable(
+        name = "evento_utilizador",
+        joinColumns = @JoinColumn(name = "id_evento"),
+        inverseJoinColumns = @JoinColumn(name = "id_utilizador")
+    )
+    private Set<Utilizador> utilizadores = new HashSet<>();
+
+    // Construtor padrão
     public Evento() {}
 
     // Getters e Setters
-    public int getIdEvento() {
-        return idEvento;
-    }
+    public int getIdEvento() { return idEvento; }
+    public void setIdEvento(int idEvento) { this.idEvento = idEvento; }
 
-    public void setIdEvento(int idEvento) {
-        this.idEvento = idEvento;
-    }
+    public String getTitulo() { return titulo; }
+    public void setTitulo(String titulo) { this.titulo = titulo; }
 
-    public String getTitulo() {
-        return titulo;
-    }
+    public String getDescricao() { return descricao; }
+    public void setDescricao(String descricao) { this.descricao = descricao; }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
+    public LocalDateTime getDataInicio() { return dataInicio; }
+    public void setDataInicio(LocalDateTime dataInicio) { this.dataInicio = dataInicio; }
 
-    public String getDescricao() {
-        return descricao;
-    }
+    public LocalDateTime getDataFim() { return dataFim; }
+    public void setDataFim(LocalDateTime dataFim) { this.dataFim = dataFim; }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
+    public String getLocal() { return local; }
+    public void setLocal(String local) { this.local = local; }
 
-    public LocalDateTime getDataInicio() {
-        return dataInicio;
-    }
+    public int getVagas() { return vagas; }
+    public void setVagas(int vagas) { this.vagas = vagas; }
 
-    public void setDataInicio(LocalDateTime dataInicio) {
-        this.dataInicio = dataInicio;
-    }
+    public String getArea() { return area; }
+    public void setArea(String area) { this.area = area; }
 
-    public LocalDateTime getDataFim() {
-        return dataFim;
-    }
+    public String getTipoEvento() { return tipoEvento; }
+    public void setTipoEvento(String tipoEvento) { this.tipoEvento = tipoEvento; }
 
-    public void setDataFim(LocalDateTime dataFim) {
-        this.dataFim = dataFim;
-    }
+    public String getPublicoAlvo() { return publicoAlvo; }
+    public void setPublicoAlvo(String publicoAlvo) { this.publicoAlvo = publicoAlvo; }
 
-    public String getLocal() {
-        return local;
-    }
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 
-    public void setLocal(String local) {
-        this.local = local;
-    }
-
-    public int getVagas() {
-        return vagas;
-    }
-
-    public void setVagas(int vagas) {
-        this.vagas = vagas;
-    }
-
-    public String getArea() {
-        return area;
-    }
-
-    public void setArea(String area) {
-        this.area = area;
-    }
-
-    public String getTipoEvento() {
-        return tipoEvento;
-    }
-
-    public void setTipoEvento(String tipoEvento) {
-        this.tipoEvento = tipoEvento;
-    }
-
-    public String getPublicoAlvo() {
-        return publicoAlvo;
-    }
-
-    public void setPublicoAlvo(String publicoAlvo) {
-        this.publicoAlvo = publicoAlvo;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
+    public Set<Utilizador> getUtilizadores() { return utilizadores; }
+    public void setUtilizadores(Set<Utilizador> utilizadores) { this.utilizadores = utilizadores; }
 }
