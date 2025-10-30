@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "UTILIZADOR")
+@Table(name = "utilizador")
 public class Utilizador {
 
     @Id

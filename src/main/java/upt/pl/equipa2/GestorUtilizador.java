@@ -1,28 +1,30 @@
 package upt.pl.equipa2;
 
 import org.hibernate.Session;
-import java.util.List;
 
 public class GestorUtilizador {
+	
+	
+public void registarUtilizador(String nome, int idade, String password) {
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    session.beginTransaction();
+    
+    Utilizador novoUtilizador = new Utilizador();
+    novoUtilizador.setNome(nome);
+    novoUtilizador.setIdade(idade);
+    novoUtilizador.setPassword(password);
+    
+    
+    session.persist(novoUtilizador);
+    session.getTransaction().commit();
+    session.close();
 
-    // Login: retorna o utilizador se nome + password existirem
-    public Utilizador login(String nome, String password) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Utilizador u = session.createQuery(
-            "FROM Utilizador WHERE nome = :nome AND password = :pass", Utilizador.class)
-            .setParameter("nome", nome)
-            .setParameter("pass", password)
-            .uniqueResult();
-        session.close();
-        return u;
-    }
-
-    // Criar utilizador
-    public void Criar(Utilizador u) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        session.persist(u);
-        session.getTransaction().commit();
-        session.close();
-    }
+    System.out.println("Utilizador registado!");
+    
+	}   
 }
+	
+	
+	
+
+

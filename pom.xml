@@ -27,21 +27,5 @@
             <artifactId>jakarta.persistence-api</artifactId>
             <version>3.1.0</version>
         </dependency>
-        <dependency>
-        	<groupId>com.upt.hibernate</groupId>
-        	<artifactId>HibernateCRUDExample</artifactId>
-        	<version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-        	<groupId>com.upt.lp</groupId>
-        	<artifactId>R_Equipa16</artifactId>
-        	<version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-        	<groupId>com.upt.lp</groupId>
-        	<artifactId>rest-api</artifactId>
-        	<version>0.0.1-SNAPSHOT</version>
-        </dependency>
       </dependencies>
-
 </project>

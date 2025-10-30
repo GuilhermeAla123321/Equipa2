@@ -6,13 +6,12 @@
 <hibernate-configuration>
     <session-factory>
         <!-- Ligação à base de dados MySQL -->
-        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/Equipa2?createDatabaseIfNotExist=true</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password">2001</property>
-
-        <!-- Dialeto do MySQL -->
-        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/equipa2</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">Gaca3112%</property>
+        
+        
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
 
         <!-- Atualiza automaticamente as tabelas -->
         <property name="hibernate.hbm2ddl.auto">update</property>

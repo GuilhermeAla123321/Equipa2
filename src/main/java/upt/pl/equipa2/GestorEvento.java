@@ -27,7 +27,7 @@ public class GestorEvento{
         Evento evento = session.get(Evento.class, id);
 
         if (evento == null) {
-            System.out.println("Evento não encontrado. Criando novo...");
+            System.out.println("Evento não encontrado.");
             evento = new Evento();
             evento.setIdEvento(id);
         }
@@ -47,22 +47,20 @@ public class GestorEvento{
         session.getTransaction().commit();
         session.close();
 
-        System.out.println("✅ Evento atualizado ou criado com sucesso!");
+        System.out.println("Evento atualizado ou criado com sucesso!");
     }
 
 
-    
-    // DELETE
-    public void deletar(int id) {
+        public void deletar(int id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
         Evento evento = session.get(Evento.class, id);
         if (evento != null) {
             session.remove(evento);
-            System.out.println("🗑️ Evento eliminado com sucesso!");
+            System.out.println("Evento eliminado com sucesso!");
         } else {
-            System.out.println("⚠️ Evento não encontrado.");
+            System.out.println(" Evento não encontrado.");
         }
 
         session.getTransaction().commit();
