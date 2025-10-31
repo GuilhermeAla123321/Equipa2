@@ -29,7 +29,7 @@ public class GestorEvento{
 
 	}
 
-    public void update(int id, String titulo, String descricao,
+    public void Atualizar(int id, String titulo, String descricao,
                        String dataInicio, String dataFim,
                        String local, int vagas, String area, String tipoEvento,
                        String publicoAlvo, String status) {
@@ -64,7 +64,7 @@ public class GestorEvento{
     }
 
 
-        public void deletar(int id) {
+        public void Apagar(int id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 

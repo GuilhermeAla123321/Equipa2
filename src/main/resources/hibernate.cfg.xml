@@ -8,7 +8,7 @@
         <!-- Ligação à base de dados MySQL -->
 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/equipa2</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">Gaca3112%</property>
+        <property name="hibernate.connection.password">2001</property>
         
         
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>

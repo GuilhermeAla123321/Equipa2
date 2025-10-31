@@ -84,7 +84,25 @@ public class Main {
             evento.registarEvento(titulo, descricao,dataInicio,dataFim,local,vagas,area,tipoEvento,publicoAlvo,status);
 
 
-        } else {
+        } else if(opcao==4) {
+        	System.out.print("ID do evento: "); int id = ler.nextInt(); ler.nextLine();
+            System.out.print("Novo título: "); String titulo = ler.nextLine();
+            System.out.print("Nova desecrição: "); String descricao = ler.nextLine();
+            System.out.print("Novo local: "); String local = ler.nextLine();
+            System.out.print("Novas vagas: "); int vagas = ler.nextInt(); ler.nextLine();
+            System.out.print("Nova área: "); String area = ler.nextLine();
+            System.out.print("Novo tipo de evento: "); String tipoEvento = ler.nextLine();
+            System.out.print("Novo público-alvo: "); String publicoAlvo = ler.nextLine();
+            System.out.print("Novo status: "); String status = ler.nextLine();
+            System.out.print("Nova Data de inicio: "); String dataInicio = ler.nextLine();
+            System.out.print("Nova Data Final: "); String dataFim = ler.nextLine();
+            evento.Atualizar(id, titulo, descricao, dataInicio, dataFim, local, vagas, area, tipoEvento, publicoAlvo, status);
+        	
+        }else if(opcao==5) {
+        	 System.out.print("ID do evento a eliminar: "); int id = ler.nextInt(); ler.nextLine();
+             evento.Apagar(id);
+        }
+        else {
             System.out.println(" A sair");
         }
 
