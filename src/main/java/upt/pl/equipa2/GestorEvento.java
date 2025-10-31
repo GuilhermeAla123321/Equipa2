@@ -1,16 +1,29 @@
 package upt.pl.equipa2;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
-import java.util.List;
 public class GestorEvento{
 	
-	public void create(Evento e1) {
-		
+	public void registarEvento(String titulo, String descricao,
+            String dataInicio, String dataFim,
+            String local, int vagas, String area, String tipoEvento,
+            String publicoAlvo, String status) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-		
-        session.persist(e1); 
         
+        Evento novoEvento = new Evento();
+
+        novoEvento.setTitulo(titulo);
+        novoEvento.setDescricao(descricao);
+        novoEvento.setDataInicio(dataInicio);
+        novoEvento.setDataFim(dataFim);
+        novoEvento.setLocal(local);
+        novoEvento.setVagas(vagas);
+        novoEvento.setArea(area);
+        novoEvento.setTipoEvento(tipoEvento);
+        novoEvento.setPublicoAlvo(publicoAlvo);
+        novoEvento.setStatus(status);
+        
+		
+        session.persist(novoEvento); 
         session.getTransaction().commit();
         session.close();
 
